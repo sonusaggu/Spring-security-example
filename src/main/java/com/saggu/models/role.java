@@ -1,5 +1,7 @@
 package com.saggu.models;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,8 +11,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="role")
-public class role {
+public class role implements Serializable {
 
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7274989462290033931L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

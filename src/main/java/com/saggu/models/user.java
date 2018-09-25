@@ -1,23 +1,28 @@
 
 package com.saggu.models;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="user")
-public class user {
+public class user implements Serializable  {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="User_id")
@@ -26,8 +31,9 @@ public class user {
 	String username;
 	@Column(name="password")
 	String password;
-	 @OneToMany(cascade = CascadeType.ALL)
-	 @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	 @OneToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	 @JoinColumn(name="User_id")
+	// @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	List<role> role;
 	public int getUserId() {
 		return userId;

@@ -17,7 +17,7 @@ public class LoginController {
 	@Autowired
 	LoginService loginService;
 	
-	@RequestMapping(value="/user",method=RequestMethod.POST,produces = "application/json")
+	@RequestMapping(value="/checkuser",method=RequestMethod.POST,produces = "application/json")
 	public user checkUser(@RequestBody user u) {
 		user res= loginService.findUser(u);
 		return res;
@@ -28,7 +28,7 @@ public class LoginController {
 		return "Admin user";
 	}
 	@RequestMapping(value="/user")
-	public String checkUser() {
+	public String checkUser1() {
 		
 		return "normal user";
 	}
